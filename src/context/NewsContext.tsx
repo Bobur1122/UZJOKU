@@ -63,6 +63,11 @@ const cleanPayload = (payload: Record<string, unknown>) =>
     Object.entries(payload).filter(([, value]) => value !== undefined)
   );
 
+const buildPublicUrl = (bucket: string, path: string) => {
+  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
+  return data.publicUrl;
+};
+
 const mapArticleToRow = (data: ArticleInput | ArticleUpdate) =>
   cleanPayload({
     title: data.title,

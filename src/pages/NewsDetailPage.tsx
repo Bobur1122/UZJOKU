@@ -42,31 +42,32 @@ export function NewsDetailPage() {
         <img
           src={article.imageUrl}
           alt={content.title}
-          className="w-full h-full object-cover" />
+          className="w-full h-full object-cover contrast-105 saturate-105" />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 text-white container mx-auto">
-          <Link
-            to={`/news?category=${article.category}`}
-            className="inline-block px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-semibold mb-4 hover:bg-primary/90 transition-colors">
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+          <div className="container mx-auto p-6 md:p-12 text-white">
+            <Link
+              to={`/news?category=${article.category}`}
+              className="inline-block px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-semibold mb-4 hover:bg-primary/90 transition-colors">
 
-            {getCategoryName(article.category)}
-          </Link>
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 max-w-4xl">
-            {content.title}
-          </h1>
-          <div className="flex flex-wrap items-center gap-6 text-sm md:text-base text-white/90">
-            <div className="flex items-center">
-              <UserIcon className="h-4 w-4 mr-2" />
-              {article.author}
-            </div>
-            <div className="flex items-center">
-              <CalendarIcon className="h-4 w-4 mr-2" />
-              {article.date}
-            </div>
-            <div className="flex items-center">
-              <EyeIcon className="h-4 w-4 mr-2" />
-              {article.views} {t.detail.views}
+              {getCategoryName(article.category)}
+            </Link>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 max-w-4xl">
+              {content.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-6 text-sm md:text-base text-white/90">
+              <div className="flex items-center">
+                <UserIcon className="h-4 w-4 mr-2" />
+                {article.author}
+              </div>
+              <div className="flex items-center">
+                <CalendarIcon className="h-4 w-4 mr-2" />
+                {article.date}
+              </div>
+              <div className="flex items-center">
+                <EyeIcon className="h-4 w-4 mr-2" />
+                {article.views} {t.detail.views}
+              </div>
             </div>
           </div>
         </div>

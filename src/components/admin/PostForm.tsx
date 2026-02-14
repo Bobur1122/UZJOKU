@@ -214,7 +214,8 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
             </div>
 
             {/* UZ Fields (Default) */}
-            <div className={activeTab === 'uz' ? 'space-y-6' : 'hidden'}>
+            {activeTab === 'uz' &&
+            <div className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="title">Sarlavha (UZ)</Label>
                 <Input
@@ -265,9 +266,11 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
 
               </div>
             </div>
+            }
 
             {/* EN Fields */}
-            <div className={activeTab === 'en' ? 'space-y-6' : 'hidden'}>
+            {activeTab === 'en' &&
+            <div className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="title_en">Title (EN)</Label>
                 <Input
@@ -306,9 +309,11 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
 
               </div>
             </div>
+            }
 
             {/* RU Fields */}
-            <div className={activeTab === 'ru' ? 'space-y-6' : 'hidden'}>
+            {activeTab === 'ru' &&
+            <div className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="title_ru">Заголовок (RU)</Label>
                 <Input
@@ -347,6 +352,7 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
 
               </div>
             </div>
+            }
           </div>
 
           <div className="flex items-center space-x-2 pt-4 border-t">

@@ -24,7 +24,7 @@ export function NewsCard({ article }: NewsCardProps) {
           <img
             src={article.imageUrl}
             alt={content.title}
-            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.02] contrast-105 saturate-105"
             loading="lazy" />
 
           <div className="absolute top-3 left-3">
