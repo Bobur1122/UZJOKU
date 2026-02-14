@@ -17,7 +17,7 @@ const translations = {
     nav: {
       home: 'Bosh sahifa',
       news: 'Yangiliklar',
-      categories: 'Ruknlar',
+      categories: 'Kategoriyalar',
       headlineGenerator: 'Sarlavha Generatori',
       adminDashboard: 'Admin Paneli',
       logout: 'Chiqish',
@@ -29,12 +29,13 @@ const translations = {
       elonlar: "E'lonlar",
       sport: 'Sport',
       stipendiyalar: 'Stipendiyalar',
-      talabalarHayoti: 'Talabalar hayoti'
+      talabalarHayoti: 'Talabalar hayoti',
+      maqola: 'Maqola'
     },
     hero: {
       title: 'Universitet Yangiliklar Portali',
       subtitle:
-      "Kampus hayotidagi eng so'nggi yangiliklar, tadbirlar va e'lonlar uchun markaziy manba.",
+      "UzJOKU hayotidagi eng so'nggi yangiliklar, tadbirlar va e'lonlar uchun markaziy manba.",
       browseNews: "Yangiliklarni ko'rish",
       headlineGen: 'Sarlavha Generatori'
     },
@@ -52,7 +53,7 @@ const translations = {
       trending: 'Ommabop'
     },
     news: {
-      title: 'Kampus Yangiliklari',
+      title: 'UzJOKU Yangiliklari',
       subtitle:
       "Universitet bo'ylab barcha so'nggi yangiliklar va e'lonlarni ko'rib chiqing.",
       searchPlaceholder: 'Yangiliklarni qidirish...',
@@ -115,7 +116,7 @@ const translations = {
     },
     footer: {
       quickLinks: 'Tezkor havolalar',
-      categories: 'Ruknlar',
+      categories: 'Kategoriyalar',
       contactUs: "Biz bilan bog'lanish",
       rights: 'Barcha huquqlar himoyalangan.',
       desc: "Universitet yangiliklari, tadbirlar va e'lonlar uchun ishonchli manba."
@@ -134,7 +135,8 @@ const translations = {
     common: {
       views: "ko'rishlar",
       search: 'Qidirish',
-      loading: 'Yuklanmoqda...'
+      loading: 'Yuklanmoqda...',
+      articles: 'maqola'
     }
   },
   en: {
@@ -153,7 +155,8 @@ const translations = {
       elonlar: 'Announcements',
       sport: 'Sports',
       stipendiyalar: 'Scholarships',
-      talabalarHayoti: 'Student Life'
+      talabalarHayoti: 'Student Life',
+      maqola: 'Article'
     },
     hero: {
       title: 'University News Portal',
@@ -257,7 +260,8 @@ const translations = {
     common: {
       views: 'views',
       search: 'Search',
-      loading: 'Loading...'
+      loading: 'Loading...',
+      articles: 'articles'
     }
   },
   ru: {
@@ -276,7 +280,8 @@ const translations = {
       elonlar: 'Объявления',
       sport: 'Спорт',
       stipendiyalar: 'Стипендии',
-      talabalarHayoti: 'Студенческая жизнь'
+      talabalarHayoti: 'Студенческая жизнь',
+      maqola: 'Статья'
     },
     hero: {
       title: 'Университетский новостной портал',
@@ -381,7 +386,8 @@ const translations = {
     common: {
       views: 'просмотров',
       search: 'Поиск',
-      loading: 'Загрузка...'
+      loading: 'Загрузка...',
+      articles: 'статей'
     }
   }
 };
@@ -408,7 +414,8 @@ export function LanguageProvider({ children }: {children: React.ReactNode;}) {
       "E'lonlar": 'elonlar',
       Sport: 'sport',
       Stipendiyalar: 'stipendiyalar',
-      'Talabalar hayoti': 'talabalarHayoti'
+      'Talabalar hayoti': 'talabalarHayoti',
+      Maqola: 'maqola'
     };
     const transKey = keyMap[category];
     return transKey ? translations[lang].categories[transKey] : category;

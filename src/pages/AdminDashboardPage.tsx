@@ -13,7 +13,7 @@ import { PostForm } from '../components/admin/PostForm';
 import { Button } from '../components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
-import { NewsArticle } from '../data/newsData';
+import { NewsArticle, CATEGORIES, Category } from '../data/newsData';
 export function AdminDashboardPage() {
   const {
     articles,
@@ -24,12 +24,15 @@ export function AdminDashboardPage() {
     setAnnouncement
   } = useNews();
   const { logout } = useAuth();
-  const { t } = useLanguage();
+  const { t, getCategoryName } = useLanguage();
   const [isEditing, setIsEditing] = useState(false);
   const [editingArticle, setEditingArticle] = useState<NewsArticle | undefined>(
     undefined
   );
   const [announcementText, setAnnouncementText] = useState(announcement || '');
+  const [selectedCategory, setSelectedCategory] = useState<Category | 'All'>(
+    'All'
+  );
   useEffect(() => {
     setAnnouncementText(announcement || '');
   }, [announcement]);
@@ -39,6 +42,10 @@ export function AdminDashboardPage() {
     drafts: articles.filter((a) => a.isDraft).length,
     views: articles.reduce((acc, curr) => acc + curr.views, 0)
   };
+  const filteredArticles =
+    selectedCategory === 'All' ?
+    articles :
+    articles.filter((article) => article.category === selectedCategory);
   const handleCreate = () => {
     setEditingArticle(undefined);
     setIsEditing(true);
@@ -172,8 +179,28 @@ export function AdminDashboardPage() {
           </Button>
         </div>
 
+        <div className="flex flex-wrap gap-2">
+          <Button
+            type="button"
+            size="sm"
+            variant={selectedCategory === 'All' ? 'primary' : 'outline'}
+            onClick={() => setSelectedCategory('All')}>
+            {getCategoryName('All')}
+          </Button>
+          {CATEGORIES.map((cat) =>
+          <Button
+            key={cat}
+            type="button"
+            size="sm"
+            variant={selectedCategory === cat ? 'primary' : 'outline'}
+            onClick={() => setSelectedCategory(cat)}>
+              {getCategoryName(cat)}
+            </Button>
+          )}
+        </div>
+
         <PostTable
-          articles={articles}
+          articles={filteredArticles}
           onEdit={handleEdit}
           onDelete={handleDelete} />
 

@@ -7,8 +7,8 @@ export function Footer() {
   const { t, getCategoryName } = useLanguage();
   return (
     <footer className="mt-auto bg-primary text-primary-foreground">
-      <div className="container px-4 py-8 md:py-12 mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="container px-4 py-8 mx-auto md:py-12">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -17,14 +17,14 @@ export function Footer() {
                 alt="Site logo"
                 className="h-14 md:h-20 object-contain max-w-full drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]" />
             </div>
-            <p className="text-xs sm:text-sm leading-relaxed text-primary-foreground/80">
+            <p className="text-xs leading-relaxed sm:text-sm text-primary-foreground/80">
               {t.footer.desc}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="hidden sm:block">
-            <h3 className="mb-3 md:mb-4 text-base md:text-lg font-semibold">
+            <h3 className="mb-3 text-base font-semibold md:mb-4 md:text-lg">
               {t.footer.quickLinks}
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-primary-foreground/80">
@@ -43,11 +43,11 @@ export function Footer() {
 
           {/* Categories */}
           <div className="hidden sm:block">
-            <h3 className="mb-3 md:mb-4 text-base md:text-lg font-semibold">
+            <h3 className="mb-3 text-base font-semibold md:mb-4 md:text-lg">
               {t.footer.categories}
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-primary-foreground/80">
-              {CATEGORIES.slice(0, 4).map((cat) =>
+              {CATEGORIES.map((cat) =>
               <li key={cat}>
                   <Link
                   to={`/news?category=${cat}`}
@@ -62,29 +62,29 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="mb-3 md:mb-4 text-base md:text-lg font-semibold">
+            <h3 className="mb-3 text-base font-semibold md:mb-4 md:text-lg">
               {t.footer.contactUs}
             </h3>
-            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-primary-foreground/80">
+            <ul className="space-y-2 text-xs sm:space-y-3 sm:text-sm text-primary-foreground/80">
               <li className="flex items-center space-x-2">
                 <MapPinIcon className="w-4 h-4" />
-                <span>123 University Ave, Campus Center</span>
+                <span>Toshkent shahar Yunusobod tumani Markaz-5 Qiyot 88</span>
               </li>
               <li className="flex items-center space-x-2">
                 <PhoneIcon className="w-4 h-4" />
-                <span>+998 123 45 67</span>
+                <span>+998 71 207 09 06</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MailIcon className="w-4 h-4" />
-                <span>Jaku@gmail.com</span>
+                <span>uzjoku@exat.uz</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-6 md:pt-8 mt-8 md:mt-12 text-xs sm:text-sm text-center border-t border-primary-foreground/20 text-primary-foreground/60">
+        <div className="pt-6 mt-8 text-xs text-center border-t md:pt-8 md:mt-12 sm:text-sm border-primary-foreground/20 text-primary-foreground/60">
           <p>
-            © {new Date().getFullYear()} UniNews Portal. {t.footer.rights}
+            © {new Date().getFullYear()} UzJOKU Portal. {t.footer.rights}
           </p>
         </div>
       </div>

@@ -3,14 +3,16 @@ export type Category =
 "E'lonlar" |
 'Sport' |
 'Stipendiyalar' |
-'Talabalar hayoti';
+'Talabalar hayoti' |
+'Maqola';
 
 export const CATEGORIES: Category[] = [
 'Tadbirlar',
 "E'lonlar",
 'Sport',
 'Stipendiyalar',
-'Talabalar hayoti'];
+'Talabalar hayoti',
+'Maqola'];
 
 
 export interface ArticleTranslation {
