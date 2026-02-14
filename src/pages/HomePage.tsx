@@ -17,8 +17,8 @@ import { Textarea } from '../components/ui/Textarea';
 import { Label } from '../components/ui/Label';
 import { CATEGORIES } from '../data/newsData';
 // TODO: O'z bot token va chat ID ni qo'ying
-const TELEGRAM_BOT_TOKEN = '8583171943:AAGueXOYRRgvktQIWFsKNXbGhHg6o9eNNY4';
-const TELEGRAM_CHAT_ID = '8204908192';
+const TELEGRAM_BOT_TOKEN = '7590950963:AAGqRlDYNovZIjbDl4pESoLK5vxc4sb1bYo';
+const TELEGRAM_CHAT_ID = '7585132401';
 export function HomePage() {
   const { articles, filterByCategory } = useNews();
   const { t, getArticleContent, getCategoryName } = useLanguage();
