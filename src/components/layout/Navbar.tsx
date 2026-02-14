@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  NewspaperIcon,
   MenuIcon,
   XIcon,
   ShieldCheckIcon,
@@ -49,8 +48,10 @@ export function Navbar() {
           className="flex items-center space-x-2"
           onClick={closeMenu}>
 
-          <NewspaperIcon className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold tracking-tight">UniNews</span>
+          <img
+            src="/logo.png"
+            alt="Site logo"
+            className="h-16 md:h-20 object-contain" />
         </Link>
 
         {/* Desktop Navigation */}

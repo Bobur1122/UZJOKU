@@ -10,22 +10,15 @@ export function NewsDetailPage() {
     id: string;
   }>();
   const navigate = useNavigate();
-  const { getArticle, filterByCategory, updateArticle } = useNews();
+  const { getArticle, filterByCategory, recordView } = useNews();
   const { t, getCategoryName, getArticleContent } = useLanguage();
   const article = getArticle(id || '');
-  // Increment views ONCE per session per article
+  // Increment views once per user per article
   useEffect(() => {
     if (article && id) {
-      const viewedKey = `uniNews_viewed_${id}`;
-      const alreadyViewed = sessionStorage.getItem(viewedKey);
-      if (!alreadyViewed) {
-        sessionStorage.setItem(viewedKey, 'true');
-        updateArticle(article.id, {
-          views: article.views + 1
-        });
-      }
+      recordView(article.id);
     }
-  }, [id]);
+  }, [id, article, recordView]);
   if (!article) {
     return (
       <div className="container mx-auto px-4 py-20 text-center">

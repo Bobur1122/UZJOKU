@@ -1,38 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { NewspaperIcon, MailIcon, PhoneIcon, MapPinIcon } from 'lucide-react';
+import { MailIcon, PhoneIcon, MapPinIcon } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { CATEGORIES } from '../../data/newsData';
 export function Footer() {
   const { t, getCategoryName } = useLanguage();
   return (
-    <footer className="bg-primary text-primary-foreground mt-auto">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="mt-auto bg-primary text-primary-foreground">
+      <div className="container px-4 py-8 md:py-12 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <NewspaperIcon className="h-6 w-6" />
-              <span className="text-xl font-bold">UniNews</span>
+              <img
+                src="/logo.png"
+                alt="Site logo"
+                className="h-14 md:h-20 object-contain max-w-full drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]" />
             </div>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed">
+            <p className="text-xs sm:text-sm leading-relaxed text-primary-foreground/80">
               {t.footer.desc}
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">
+          <div className="hidden sm:block">
+            <h3 className="mb-3 md:mb-4 text-base md:text-lg font-semibold">
               {t.footer.quickLinks}
             </h3>
-            <ul className="space-y-2 text-sm text-primary-foreground/80">
+            <ul className="space-y-2 text-xs sm:text-sm text-primary-foreground/80">
               <li>
-                <Link to="/" className="hover:text-white transition-colors">
+                <Link to="/" className="transition-colors hover:text-white">
                   {t.nav.home}
                 </Link>
               </li>
               <li>
-                <Link to="/news" className="hover:text-white transition-colors">
+                <Link to="/news" className="transition-colors hover:text-white">
                   {t.nav.news}
                 </Link>
               </li>
@@ -40,16 +42,16 @@ export function Footer() {
           </div>
 
           {/* Categories */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">
+          <div className="hidden sm:block">
+            <h3 className="mb-3 md:mb-4 text-base md:text-lg font-semibold">
               {t.footer.categories}
             </h3>
-            <ul className="space-y-2 text-sm text-primary-foreground/80">
+            <ul className="space-y-2 text-xs sm:text-sm text-primary-foreground/80">
               {CATEGORIES.slice(0, 4).map((cat) =>
               <li key={cat}>
                   <Link
                   to={`/news?category=${cat}`}
-                  className="hover:text-white transition-colors">
+                  className="transition-colors hover:text-white">
 
                     {getCategoryName(cat)}
                   </Link>
@@ -60,25 +62,27 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">{t.footer.contactUs}</h3>
-            <ul className="space-y-3 text-sm text-primary-foreground/80">
+            <h3 className="mb-3 md:mb-4 text-base md:text-lg font-semibold">
+              {t.footer.contactUs}
+            </h3>
+            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-primary-foreground/80">
               <li className="flex items-center space-x-2">
-                <MapPinIcon className="h-4 w-4" />
+                <MapPinIcon className="w-4 h-4" />
                 <span>123 University Ave, Campus Center</span>
               </li>
               <li className="flex items-center space-x-2">
-                <PhoneIcon className="h-4 w-4" />
+                <PhoneIcon className="w-4 h-4" />
                 <span>+998 123 45 67</span>
               </li>
               <li className="flex items-center space-x-2">
-                <MailIcon className="h-4 w-4" />
+                <MailIcon className="w-4 h-4" />
                 <span>Jaku@gmail.com</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-sm text-primary-foreground/60">
+        <div className="pt-6 md:pt-8 mt-8 md:mt-12 text-xs sm:text-sm text-center border-t border-primary-foreground/20 text-primary-foreground/60">
           <p>
             © {new Date().getFullYear()} UniNews Portal. {t.footer.rights}
           </p>

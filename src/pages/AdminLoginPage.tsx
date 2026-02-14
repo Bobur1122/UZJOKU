@@ -15,10 +15,10 @@ import {
   CardFooter } from
 '../components/ui/Card';
 export function AdminLoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { login, isAdmin } = useAuth();
+  const { login, isAdmin, loading } = useAuth();
   const { t } = useLanguage();
   const navigate = useNavigate();
   // If already logged in, redirect to dashboard
@@ -29,17 +29,17 @@ export function AdminLoginPage() {
       });
     }
   }, [isAdmin]);
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    const success = login(username, password);
+    const success = await login(email, password);
     if (success) {
       navigate('/admin/dashboard');
     } else {
       setError(t.admin.invalidCredentials);
     }
   };
-  if (isAdmin) {
+  if (isAdmin || loading) {
     return null;
   }
   return (
@@ -61,13 +61,13 @@ export function AdminLoginPage() {
               </div>
             }
             <div className="space-y-2">
-              <Label htmlFor="username">{t.admin.username}</Label>
+              <Label htmlFor="username">Email</Label>
               <Input
                 id="username"
-                type="text"
-                placeholder="admin"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                type="email"
+                placeholder="admin@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required />
 
             </div>

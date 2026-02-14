@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   PlusIcon,
   LayoutDashboardIcon,
@@ -30,6 +30,9 @@ export function AdminDashboardPage() {
     undefined
   );
   const [announcementText, setAnnouncementText] = useState(announcement || '');
+  useEffect(() => {
+    setAnnouncementText(announcement || '');
+  }, [announcement]);
   const stats = {
     total: articles.length,
     published: articles.filter((a) => !a.isDraft).length,
@@ -49,7 +52,9 @@ export function AdminDashboardPage() {
       deleteArticle(id);
     }
   };
-  const handleSubmit = (data: Omit<NewsArticle, 'id' | 'views' | 'date'>) => {
+  const handleSubmit = (
+    data: Omit<NewsArticle, 'id' | 'views' | 'date'> & {imageFile?: File | null;}
+  ) => {
     if (editingArticle) {
       updateArticle(editingArticle.id, data);
     } else {
@@ -57,10 +62,11 @@ export function AdminDashboardPage() {
     }
     setIsEditing(false);
   };
-  const handleAnnouncementUpdate = () => {
-    setAnnouncement(announcementText || null);
+  const handleAnnouncementUpdate = async () => {
+    await setAnnouncement(announcementText || null);
     alert('Announcement updated successfully!');
   };
+
   if (isEditing) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -155,6 +161,7 @@ export function AdminDashboardPage() {
           </div>
         </CardContent>
       </Card>
+
 
       {/* Posts Management */}
       <div className="space-y-4">

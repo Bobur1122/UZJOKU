@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
 import { useLanguage } from '../../context/LanguageContext';
 interface PostFormProps {
   initialData?: NewsArticle;
-  onSubmit: (data: Omit<NewsArticle, 'id' | 'views' | 'date'>) => void;
+  onSubmit: (data: Omit<NewsArticle, 'id' | 'views' | 'date'> & {imageFile?: File | null;}) => void;
   onCancel: () => void;
 }
 type LangTab = 'uz' | 'en' | 'ru';
@@ -22,6 +22,7 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
     content: '',
     category: 'Tadbirlar' as Category,
     imageUrl: '',
+    imageFile: null as File | null,
     author: '',
     isDraft: false,
     translations: {
@@ -45,6 +46,7 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
         content: initialData.content,
         category: initialData.category,
         imageUrl: initialData.imageUrl,
+        imageFile: null,
         author: initialData.author,
         isDraft: initialData.isDraft,
         translations: {
@@ -69,14 +71,11 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData({
-          ...formData,
-          imageUrl: reader.result as string
-        });
-      };
-      reader.readAsDataURL(file);
+      setFormData({
+        ...formData,
+        imageFile: file,
+        imageUrl: URL.createObjectURL(file)
+      });
     }
   };
   const updateTranslation = (
@@ -153,7 +152,8 @@ export function PostForm({ initialData, onSubmit, onCancel }: PostFormProps) {
                 onChange={(e) =>
                 setFormData({
                   ...formData,
-                  imageUrl: e.target.value
+                  imageUrl: e.target.value,
+                  imageFile: null
                 })
                 }
                 placeholder="https://example.com/image.jpg" />
